@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "test_mod_forge:block/test_simple_block"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/bastion_treasure"
+    }
+  ],
+  "type": "test_mod_forge:smelting"
+}
