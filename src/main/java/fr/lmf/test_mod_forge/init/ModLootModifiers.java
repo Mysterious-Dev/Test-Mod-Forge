@@ -11,6 +11,6 @@ public class ModLootModifiers {
 
     public static final DeferredRegister<GlobalLootModifierSerializer<?>> GLM = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, Main.MODID);
 
-    public static final RegistryObject<TestModifier.Serializer> TEST_MODIFIER = GLM.register("smelting", TestModifier.Serializer::new);
+    public static final RegistryObject<TestModifier.Serializer> TEST_MODIFIER = GLM.register("test_modifier", TestModifier.Serializer::new);
 
 }
