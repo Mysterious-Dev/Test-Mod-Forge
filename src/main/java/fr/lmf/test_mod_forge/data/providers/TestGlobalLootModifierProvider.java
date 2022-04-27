@@ -4,10 +4,8 @@ import fr.lmf.test_mod_forge.init.ModLootModifiers;
 import fr.lmf.test_mod_forge.loot_modifier.TestModifier;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.common.loot.LootTableIdCondition;
 
 public class TestGlobalLootModifierProvider extends GlobalLootModifierProvider {
     public TestGlobalLootModifierProvider(DataGenerator gen, String modid) {
