@@ -29,7 +29,7 @@ public class TestModifier extends LootModifier {
     protected List<ItemStack> doApply(final List<ItemStack> generatedLoot, final LootContext context) {
         final BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
 
-        if (state.getBlock() instanceof OreBlock){
+        if (state != null && state.getBlock() instanceof OreBlock){
             generatedLoot.add(new ItemStack(Items.COBBLESTONE));
         }
 
