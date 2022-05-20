@@ -2,6 +2,7 @@ package fr.lmf.test_mod_forge;
 
 import com.mojang.logging.LogUtils;
 import fr.lmf.test_mod_forge.init.ModBlocks;
+import fr.lmf.test_mod_forge.init.ModItems;
 import fr.lmf.test_mod_forge.init.ModLootModifiers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +37,7 @@ public class Main
         ModLootModifiers.GLM.register(bus);
         ModBlocks.BLOCKS.register(bus);
         ModBlocks.BLOCK_ITEMS.register(bus);
+        ModItems.ITEMS.register(bus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
