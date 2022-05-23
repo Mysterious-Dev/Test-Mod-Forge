@@ -1,3 +1,5 @@
 {
-  "block.test_mod_forge.test_simple_block": "Test Simple Block"
+  "block.test_mod_forge.test_simple_block": "Test Simple Block",
+  "item.test_mod_forge.test_pickaxe": "Test Pickaxe",
+  "item.test_mod_forge.test_tool": "Test Tool"
 }

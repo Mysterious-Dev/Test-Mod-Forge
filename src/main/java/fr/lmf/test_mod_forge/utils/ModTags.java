@@ -8,6 +8,8 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTags {
 
-    public static final TagKey<Block> MON_TIER_TAG = BlockTags.create(new ResourceLocation(Main.MODID, "test_tier"));
+    public static final TagKey<Block> TEST_TOOL_TIER_TAG = BlockTags.create(new ResourceLocation(Main.MODID, "test_tier"));
+
+    public static final TagKey<Block> TEST_TOOL_TYPE_TAG = BlockTags.create(new ResourceLocation(Main.MODID, "test_tool_type"));
 
 }

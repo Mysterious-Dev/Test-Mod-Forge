@@ -4,6 +4,9 @@ import com.mojang.logging.LogUtils;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModItems;
 import fr.lmf.test_mod_forge.init.ModLootModifiers;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -24,6 +27,13 @@ public class Main
 {
     public static final String MODID = "test_mod_forge";
     private static final Logger LOGGER = LogUtils.getLogger();
+
+    public static final CreativeModeTab TEST_TAB = new CreativeModeTab("test_tab") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(Items.DIAMOND);
+        }
+    };
 
     public Main()
     {

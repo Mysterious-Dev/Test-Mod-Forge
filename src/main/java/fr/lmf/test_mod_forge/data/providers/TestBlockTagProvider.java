@@ -1,6 +1,7 @@
 package fr.lmf.test_mod_forge.data.providers;
 
 import fr.lmf.test_mod_forge.init.ModBlocks;
+import fr.lmf.test_mod_forge.utils.ModTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
@@ -18,6 +19,9 @@ public class TestBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.TEST_SIMPLE_BLOCK.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.TEST_SIMPLE_BLOCK.get());
+
+        tag(ModTags.TEST_TOOL_TYPE_TAG)
                 .add(ModBlocks.TEST_SIMPLE_BLOCK.get());
     }
 }
