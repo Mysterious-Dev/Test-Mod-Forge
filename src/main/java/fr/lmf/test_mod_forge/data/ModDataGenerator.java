@@ -24,6 +24,7 @@ public class ModDataGenerator {
             generator.addProvider(new TestGlobalLootModifierProvider(generator, Main.MODID));
             generator.addProvider(new TestBlockTagProvider(generator, Main.MODID, event.getExistingFileHelper()));
             generator.addProvider(new TestLootTableProvider(generator));
+            generator.addProvider(new TestRecipeProvider(generator));
         }
 
     }
