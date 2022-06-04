@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "group": "test_recipe",
+  "ingredient": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "result": "minecraft:iron_ingot",
+  "experience": 10.0,
+  "cookingtime": 100
+}

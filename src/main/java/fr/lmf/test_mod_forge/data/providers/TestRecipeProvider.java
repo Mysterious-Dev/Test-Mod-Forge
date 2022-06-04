@@ -2,10 +2,12 @@ package fr.lmf.test_mod_forge.data.providers;
 
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.Main;
+import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.SmeltingRecipe;
 
 import java.util.function.Consumer;
 
@@ -27,6 +29,37 @@ public class TestRecipeProvider extends RecipeProvider {
                 .group("test_recipe")
                 .unlockedBy("obtain_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND))
                 .save(p_176532_);
+
+        ShapelessRecipeBuilder.shapeless(Items.DIAMOND)
+                .group("test_recipe")
+                .requires(Items.DIRT)
+                .requires(Items.GOLD_INGOT)
+                .unlockedBy("obtain_dirt", InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIRT))
+                .save(p_176532_);
+
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(Items.NETHERITE_INGOT), Items.IRON_INGOT, 10, 100)
+                .group("test_recipe")
+                .unlockedBy("obtain_netherite_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.NETHERITE_INGOT))
+                .save(p_176532_);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHERITE_INGOT), Items.IRON_INGOT, 10, 100)
+                .group("test_recipe")
+                .unlockedBy("obtain_netherite_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.NETHERITE_INGOT))
+                .save(p_176532_, "iron_ingot_smelting");
+
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(Items.NETHERITE_INGOT), Items.IRON_INGOT, 10, 100)
+                .group("test_recipe")
+                .unlockedBy("obtain_netherite_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.NETHERITE_INGOT))
+                .save(p_176532_, "iron_ingot_smoking");
+
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.NETHERITE_INGOT), Items.IRON_INGOT, 10, 100)
+                .group("test_recipe")
+                .unlockedBy("obtain_netherite_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.NETHERITE_INGOT))
+                .save(p_176532_, "iron_ingot_blasting");
+
+        UpgradeRecipeBuilder.smithing(Ingredient.of(Items.DIAMOND_BLOCK), Ingredient.of(Items.NETHERITE_INGOT), Items.NETHERITE_BLOCK)
+                .unlocks("obtain_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND))
+                .save(p_176532_, new ResourceLocation("test_smithing_recipe"));
 
     }
 }

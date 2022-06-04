@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "minecraft:test_smithing_recipe"
+    ]
+  },
+  "criteria": {
+    "obtain_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:diamond"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:test_smithing_recipe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_diamond",
+      "has_the_recipe"
+    ]
+  ]
+}
