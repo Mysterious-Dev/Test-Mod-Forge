@@ -16,5 +16,7 @@ public class TestLangProvider extends LanguageProvider {
 
         add(ModItems.TEST_PICKAXE.get(), "Test Pickaxe");
         add(ModItems.TEST_TOOL.get(), "Test Tool");
+
+        add("itemGroup.test_tab", "Test Tab");
     }
 }
