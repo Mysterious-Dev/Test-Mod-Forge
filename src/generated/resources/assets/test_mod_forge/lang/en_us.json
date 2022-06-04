@@ -1,5 +1,7 @@
 {
   "block.test_mod_forge.test_simple_block": "Test Simple Block",
+  "item.test_mod_forge.animated_item": "Animated Item",
+  "item.test_mod_forge.animated_item_interpolated": "Animated Item Interpolated",
   "item.test_mod_forge.test_pickaxe": "Test Pickaxe",
   "item.test_mod_forge.test_tool": "Test Tool",
   "itemGroup.test_tab": "Test Tab"

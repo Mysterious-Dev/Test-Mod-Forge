@@ -26,5 +26,13 @@ public class TestItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/handheld"))
                 .texture("layer0", new ResourceLocation(Main.MODID, "item/test_pickaxe"));
 
+        getBuilder("animated_item_interpolated")
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", new ResourceLocation(Main.MODID, "item/animated_item_interpolated"));
+
+        getBuilder("animated_item")
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", new ResourceLocation(Main.MODID, "item/animated_item"));
+
     }
 }
