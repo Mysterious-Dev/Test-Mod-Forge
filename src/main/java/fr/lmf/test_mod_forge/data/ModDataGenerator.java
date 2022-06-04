@@ -23,6 +23,7 @@ public class ModDataGenerator {
         if(event.includeServer()){
             generator.addProvider(new TestGlobalLootModifierProvider(generator, Main.MODID));
             generator.addProvider(new TestBlockTagProvider(generator, Main.MODID, event.getExistingFileHelper()));
+            generator.addProvider(new TestBiomeTagsProvider(generator, Main.MODID, event.getExistingFileHelper()));
             generator.addProvider(new TestLootTableProvider(generator));
             generator.addProvider(new TestRecipeProvider(generator));
         }

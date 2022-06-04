@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModItems;
 import fr.lmf.test_mod_forge.init.ModLootModifiers;
+import fr.lmf.test_mod_forge.init.ModStructures;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -48,6 +49,10 @@ public class Main
         ModBlocks.BLOCKS.register(bus);
         ModBlocks.BLOCK_ITEMS.register(bus);
         ModItems.ITEMS.register(bus);
+
+        ModStructures.STRUCTURES.register(bus);
+        ModStructures.CONFIGURED_STRUCTURES.register(bus);
+        ModStructures.STRUCTURE_SETS.register(bus);
     }
 
     private void setup(final FMLCommonSetupEvent event)
