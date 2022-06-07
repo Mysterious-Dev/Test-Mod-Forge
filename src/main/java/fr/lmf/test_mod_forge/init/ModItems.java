@@ -17,5 +17,6 @@ public class ModItems {
     public static final RegistryObject<Item> TEST_TOOL = ITEMS.register("test_tool", ()-> new TestToolItem( 1, -2.8F, Tiers.DIAMOND, new Item.Properties().tab(Main.TEST_TAB)));
     public static final RegistryObject<Item> ANIMATED_ITEM_INTERPOLATED = ITEMS.register("animated_item_interpolated", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
     public static final RegistryObject<Item> ANIMATED_ITEM = ITEMS.register("animated_item", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
+    public static final RegistryObject<Item> PROPERTY_ITEM = ITEMS.register("property_item", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
 
 }

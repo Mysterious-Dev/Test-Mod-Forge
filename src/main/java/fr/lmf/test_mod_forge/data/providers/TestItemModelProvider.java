@@ -34,5 +34,15 @@ public class TestItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", new ResourceLocation(Main.MODID, "item/animated_item"));
 
+        ModelFile propertyItemFull = withExistingParent("property_item_full", "item/generated")
+                .texture("layer0", modLoc("item/property_item_full"));
+
+        ModelFile propertyItem = withExistingParent("property_item", "item/generated")
+                .texture("layer0", modLoc("item/property_item"))
+                .override()
+                .predicate(modLoc("test_property"), 1)
+                .model(getExistingFile(modLoc("item/property_item_full")))
+                .end();
+
     }
 }

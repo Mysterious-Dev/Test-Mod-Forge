@@ -20,6 +20,8 @@ public class TestLangProvider extends LanguageProvider {
         add(ModItems.ANIMATED_ITEM.get(), "Animated Item");
         add(ModItems.ANIMATED_ITEM_INTERPOLATED.get(), "Animated Item Interpolated");
 
+        add(ModItems.PROPERTY_ITEM.get(), "Property Item");
+
         add("itemGroup.test_tab", "Test Tab");
     }
 }
