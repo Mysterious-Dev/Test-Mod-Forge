@@ -1,10 +1,8 @@
 package fr.lmf.test_mod_forge.items;
 
 import fr.lmf.test_mod_forge.utils.ModTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.level.block.Block;
 
 public class TestToolItem extends DiggerItem {
 

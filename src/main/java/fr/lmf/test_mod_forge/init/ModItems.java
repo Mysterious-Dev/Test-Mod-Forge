@@ -1,6 +1,7 @@
 package fr.lmf.test_mod_forge.init;
 
 import fr.lmf.test_mod_forge.Main;
+import fr.lmf.test_mod_forge.items.TestCapaItem;
 import fr.lmf.test_mod_forge.items.TestToolItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
@@ -18,5 +19,6 @@ public class ModItems {
     public static final RegistryObject<Item> ANIMATED_ITEM_INTERPOLATED = ITEMS.register("animated_item_interpolated", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
     public static final RegistryObject<Item> ANIMATED_ITEM = ITEMS.register("animated_item", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
     public static final RegistryObject<Item> PROPERTY_ITEM = ITEMS.register("property_item", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
+    public static final RegistryObject<Item> CAPA_ITEM = ITEMS.register("test_capa_item", ()-> new TestCapaItem(new Item.Properties().tab(Main.TEST_TAB)));
 
 }

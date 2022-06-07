@@ -22,6 +22,8 @@ public class TestLangProvider extends LanguageProvider {
 
         add(ModItems.PROPERTY_ITEM.get(), "Property Item");
 
+        add(ModItems.CAPA_ITEM.get(), "Test Capa Item");
+
         add("itemGroup.test_tab", "Test Tab");
     }
 }

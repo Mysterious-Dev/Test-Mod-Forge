@@ -1,10 +1,13 @@
 package fr.lmf.test_mod_forge;
 
 import com.mojang.logging.LogUtils;
+import fr.lmf.test_mod_forge.capability.TestCapability;
+import fr.lmf.test_mod_forge.event.CapabilityEvent;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModItems;
 import fr.lmf.test_mod_forge.init.ModLootModifiers;
 import fr.lmf.test_mod_forge.init.ModStructures;
+import fr.lmf.test_mod_forge.network.NetworkInit;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -47,6 +50,8 @@ public class Main
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(TestCapability.class);
+        MinecraftForge.EVENT_BUS.register(CapabilityEvent.class);
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLootModifiers.GLM.register(bus);
@@ -68,8 +73,7 @@ public class Main
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        NetworkInit.init();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
