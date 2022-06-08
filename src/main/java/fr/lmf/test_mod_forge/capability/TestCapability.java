@@ -10,6 +10,7 @@ import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.capabilities.CapabilityToken;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class TestCapability {
@@ -34,6 +35,39 @@ public class TestCapability {
             event.addCapability(CAP_KEY, provider);
         }
     }
+
+    @SubscribeEvent
+    public void onPlayerSpawn(PlayerEvent.PlayerLoggedInEvent e)
+    {
+        Player p = e.getPlayer();
+
+        p.getCapability(POWER_CAPABILITY).ifPresent(h -> {
+            h.setPower(h.getPower());
+        });
+    }
+
+    @SubscribeEvent
+    public void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent e)
+    {
+        Player p = e.getPlayer();
+
+        p.getCapability(POWER_CAPABILITY).ifPresent(h -> {
+            h.setPower(h.getPower());
+        });
+    }
+
+
+
+    @SubscribeEvent
+    public void onInteract(PlayerEvent.PlayerRespawnEvent e)
+    {
+        Player p = e.getPlayer();
+
+        p.getCapability(POWER_CAPABILITY).ifPresent(h -> {
+            h.setPower(h.getPower());
+        });
+    }
+
 
     @SubscribeEvent
     public void registerCaps(RegisterCapabilitiesEvent event) {
