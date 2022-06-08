@@ -1,5 +1,5 @@
 {
+  "type": "test_mod_forge:test_modifier",
   "conditions": [],
-  "item": "minecraft:cobblestone",
-  "type": "test_mod_forge:test_modifier"
+  "item": "minecraft:cobblestone"
 }

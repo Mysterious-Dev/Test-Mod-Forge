@@ -1,6 +1,6 @@
 {
-  "replace": false,
   "entries": [
     "test_mod_forge:cobblestone_ore_drop"
-  ]
+  ],
+  "replace": false
 }

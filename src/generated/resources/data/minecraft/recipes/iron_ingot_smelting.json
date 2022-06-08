@@ -1,10 +1,10 @@
 {
   "type": "minecraft:smelting",
+  "cookingtime": 100,
+  "experience": 10.0,
   "group": "test_recipe",
   "ingredient": {
     "item": "minecraft:netherite_ingot"
   },
-  "result": "minecraft:iron_ingot",
-  "experience": 10.0,
-  "cookingtime": 100
+  "result": "minecraft:iron_ingot"
 }

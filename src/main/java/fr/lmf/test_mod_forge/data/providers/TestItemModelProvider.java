@@ -38,6 +38,10 @@ public class TestItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", new ResourceLocation(Main.MODID, "item/test_capa_item"));
 
+        getBuilder("colored_item")
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", new ResourceLocation(Main.MODID, "item/colored_item"));
+
         ModelFile propertyItemFull = withExistingParent("property_item_full", "item/generated")
                 .texture("layer0", modLoc("item/property_item_full"));
 

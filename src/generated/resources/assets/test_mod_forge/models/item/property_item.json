@@ -1,14 +1,14 @@
 {
   "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "test_mod_forge:item/property_item"
-  },
   "overrides": [
     {
+      "model": "test_mod_forge:item/property_item_full",
       "predicate": {
         "test_mod_forge:test_property": 1.0
-      },
-      "model": "test_mod_forge:item/property_item_full"
+      }
     }
-  ]
+  ],
+  "textures": {
+    "layer0": "test_mod_forge:item/property_item"
+  }
 }

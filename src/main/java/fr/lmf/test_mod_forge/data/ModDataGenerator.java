@@ -15,18 +15,16 @@ public class ModDataGenerator {
 
         DataGenerator generator = event.getGenerator();
 
-        if(event.includeClient()){
-            generator.addProvider(new TestLangProvider(generator, Main.MODID, "en_us"));
-            generator.addProvider(new TestItemModelProvider(generator, Main.MODID, event.getExistingFileHelper()));
-            generator.addProvider(new TestBlockstateProvider(generator, Main.MODID, event.getExistingFileHelper()));
-        }
-        if(event.includeServer()){
-            generator.addProvider(new TestGlobalLootModifierProvider(generator, Main.MODID));
-            generator.addProvider(new TestBlockTagProvider(generator, Main.MODID, event.getExistingFileHelper()));
-            generator.addProvider(new TestBiomeTagsProvider(generator, Main.MODID, event.getExistingFileHelper()));
-            generator.addProvider(new TestLootTableProvider(generator));
-            generator.addProvider(new TestRecipeProvider(generator));
-        }
+        generator.addProvider(event.includeClient(), new TestLangProvider(generator, Main.MODID, "en_us"));
+        generator.addProvider(event.includeClient(), new TestItemModelProvider(generator, Main.MODID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new TestBlockstateProvider(generator, Main.MODID, event.getExistingFileHelper()));
+
+        generator.addProvider(event.includeServer(), new TestGlobalLootModifierProvider(generator, Main.MODID));
+        generator.addProvider(event.includeServer(), new TestBlockTagProvider(generator, Main.MODID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeServer(), new TestBiomeTagsProvider(generator, Main.MODID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeServer(), new TestLootTableProvider(generator));
+        generator.addProvider(event.includeServer(), new TestRecipeProvider(generator));
+
 
     }
 

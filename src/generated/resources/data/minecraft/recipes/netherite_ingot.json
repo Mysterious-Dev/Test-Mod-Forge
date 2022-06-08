@@ -1,11 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "test_recipe",
-  "pattern": [
-    "xxx",
-    "yyy",
-    "zzz"
-  ],
   "key": {
     "x": {
       "item": "minecraft:diamond"
@@ -17,8 +12,13 @@
       "item": "minecraft:gold_ingot"
     }
   },
+  "pattern": [
+    "xxx",
+    "yyy",
+    "zzz"
+  ],
   "result": {
-    "item": "minecraft:netherite_ingot",
-    "count": 16
+    "count": 16,
+    "item": "minecraft:netherite_ingot"
   }
 }

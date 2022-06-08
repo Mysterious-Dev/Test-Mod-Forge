@@ -21,6 +21,7 @@ public class TestLangProvider extends LanguageProvider {
         add(ModItems.ANIMATED_ITEM_INTERPOLATED.get(), "Animated Item Interpolated");
 
         add(ModItems.PROPERTY_ITEM.get(), "Property Item");
+        add(ModItems.COLORED_ITEM.get(), "Colored Item");
 
         add(ModItems.CAPA_ITEM.get(), "Test Capa Item");
 

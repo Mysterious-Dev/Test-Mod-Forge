@@ -1,12 +1,13 @@
 package fr.lmf.test_mod_forge.loot_modifier;
 
 import com.google.gson.JsonObject;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -14,8 +15,6 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.List;
 
 public class TestModifier extends LootModifier {
 
@@ -26,10 +25,10 @@ public class TestModifier extends LootModifier {
     }
 
     @Override
-    protected List<ItemStack> doApply(final List<ItemStack> generatedLoot, final LootContext context) {
+    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         final BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
 
-        if (state != null && state.getBlock() instanceof OreBlock){
+        if (state != null && state.getBlock() instanceof DropExperienceBlock){
             generatedLoot.add(new ItemStack(Items.COBBLESTONE));
         }
 
