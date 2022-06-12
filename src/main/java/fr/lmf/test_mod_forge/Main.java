@@ -2,12 +2,16 @@ package fr.lmf.test_mod_forge;
 
 import com.mojang.logging.LogUtils;
 import fr.lmf.test_mod_forge.capability.TestCapability;
+import fr.lmf.test_mod_forge.entity.client.TestEntityRenderer;
 import fr.lmf.test_mod_forge.event.CapabilityEvent;
+import fr.lmf.test_mod_forge.event.EntityEvent;
 import fr.lmf.test_mod_forge.init.ModBlocks;
+import fr.lmf.test_mod_forge.init.ModEntities;
 import fr.lmf.test_mod_forge.init.ModItems;
 import fr.lmf.test_mod_forge.init.ModLootModifiers;
 import fr.lmf.test_mod_forge.network.NetworkInit;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -51,12 +55,15 @@ public class Main
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(TestCapability.class);
         MinecraftForge.EVENT_BUS.register(CapabilityEvent.class);
+        MinecraftForge.EVENT_BUS.register(EntityEvent.class);
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLootModifiers.GLM.register(bus);
         ModBlocks.BLOCKS.register(bus);
         ModBlocks.BLOCK_ITEMS.register(bus);
         ModItems.ITEMS.register(bus);
+
+        ModEntities.ENTITY_TYPES.register(bus);
 
         /*ModStructures.STRUCTURES.register(bus);
         ModStructures.CONFIGURED_STRUCTURES.register(bus);
@@ -72,6 +79,8 @@ public class Main
         Minecraft.getInstance().getItemColors().register((stack, color) -> {
             return stack.getOrCreateTag().contains("color") ? stack.getOrCreateTag().getInt("color") : 0x13421772;
         }, ModItems.COLORED_ITEM.get());
+
+        EntityRenderers.register(ModEntities.TEST_ENTITY.get(), TestEntityRenderer::new);
     }
 
     private void setup(final FMLCommonSetupEvent event)
