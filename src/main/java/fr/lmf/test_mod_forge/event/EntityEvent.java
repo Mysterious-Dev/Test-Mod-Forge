@@ -4,8 +4,6 @@ import fr.lmf.test_mod_forge.Main;
 import fr.lmf.test_mod_forge.entity.TestEntity;
 import fr.lmf.test_mod_forge.entity.client.TestEntityModel;
 import fr.lmf.test_mod_forge.init.ModEntities;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

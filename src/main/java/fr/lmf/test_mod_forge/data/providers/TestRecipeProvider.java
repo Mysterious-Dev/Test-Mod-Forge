@@ -2,12 +2,10 @@ package fr.lmf.test_mod_forge.data.providers;
 
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.Main;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
 
 import java.util.function.Consumer;
 
