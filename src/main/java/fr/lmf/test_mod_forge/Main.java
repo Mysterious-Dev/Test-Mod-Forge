@@ -10,6 +10,7 @@ import fr.lmf.test_mod_forge.init.ModEntities;
 import fr.lmf.test_mod_forge.init.ModItems;
 import fr.lmf.test_mod_forge.init.ModLootModifiers;
 import fr.lmf.test_mod_forge.network.NetworkInit;
+import fr.lmf.test_mod_forge.utils.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -22,12 +23,15 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.fml.loading.FileUtils;
 import org.slf4j.Logger;
 
 import java.util.stream.Collectors;
@@ -56,6 +60,9 @@ public class Main
         MinecraftForge.EVENT_BUS.register(TestCapability.class);
         MinecraftForge.EVENT_BUS.register(CapabilityEvent.class);
         MinecraftForge.EVENT_BUS.register(EntityEvent.class);
+
+        FileUtils.getOrCreateDirectory(FMLPaths.CONFIGDIR.get().resolve(MODID), MODID);
+        ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, ModConfig.CLIENT_CONFIG.build());
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLootModifiers.GLM.register(bus);
