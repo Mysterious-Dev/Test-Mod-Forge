@@ -1,6 +1,5 @@
 package fr.lmf.test_mod_forge.data.providers;
 
-import fr.lmf.test_mod_forge.init.ModLootModifiers;
 import fr.lmf.test_mod_forge.loot_modifier.TestModifier;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.Items;
@@ -14,10 +13,13 @@ public class TestGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("cobblestone_ore_drop", ModLootModifiers.TEST_MODIFIER.get(), new TestModifier(
-                new LootItemCondition[]{
-                },
-                Items.COBBLESTONE
-        ));
+        add("cobblestone_ore_drop", new TestModifier(
+                    new LootItemCondition[]{
+                    },
+                    Items.COBBLESTONE
+                )
+        );
     }
 }
+
+

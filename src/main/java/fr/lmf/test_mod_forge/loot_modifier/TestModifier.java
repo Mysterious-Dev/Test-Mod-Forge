@@ -1,9 +1,10 @@
 package fr.lmf.test_mod_forge.loot_modifier;
 
-import com.google.gson.JsonObject;
+import com.google.common.base.Supplier;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -12,11 +13,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class TestModifier extends LootModifier {
+
+    public static final Supplier<Codec<TestModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst)
+            .and(ForgeRegistries.ITEMS.getCodec().fieldOf("seedItem").forGetter(m -> m.itemToDrop))
+            .apply(inst, TestModifier::new)
+    ));
 
     private final Item itemToDrop;
     public TestModifier(final LootItemCondition[] conditionsIn, Item itemDrop) {
@@ -35,18 +41,8 @@ public class TestModifier extends LootModifier {
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<TestModifier> {
-        @Override
-        public TestModifier read(final ResourceLocation location, final JsonObject object, final LootItemCondition[] conditions) {
-            Item itemDrop = ForgeRegistries.ITEMS.getValue(new ResourceLocation(GsonHelper.getAsString(object, "item")));
-            return new TestModifier(conditions, itemDrop);
-        }
-
-        @Override
-        public JsonObject write(final TestModifier instance) {
-            JsonObject json = makeConditions(instance.conditions);
-            json.addProperty("item", ForgeRegistries.ITEMS.getKey(instance.itemToDrop).toString());
-            return json;
-        }
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec() {
+        return CODEC.get();
     }
 }
