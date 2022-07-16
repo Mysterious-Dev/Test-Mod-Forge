@@ -39,7 +39,7 @@ public class TestCapability {
     @SubscribeEvent
     public void onPlayerSpawn(PlayerEvent.PlayerLoggedInEvent e)
     {
-        Player p = e.getPlayer();
+        Player p = e.getEntity();
 
         p.getCapability(POWER_CAPABILITY).ifPresent(h -> {
             h.setPower(h.getPower());
@@ -49,7 +49,7 @@ public class TestCapability {
     @SubscribeEvent
     public void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent e)
     {
-        Player p = e.getPlayer();
+        Player p = e.getEntity();
 
         p.getCapability(POWER_CAPABILITY).ifPresent(h -> {
             h.setPower(h.getPower());
@@ -61,7 +61,7 @@ public class TestCapability {
     @SubscribeEvent
     public void onInteract(PlayerEvent.PlayerRespawnEvent e)
     {
-        Player p = e.getPlayer();
+        Player p = e.getEntity();
 
         p.getCapability(POWER_CAPABILITY).ifPresent(h -> {
             h.setPower(h.getPower());

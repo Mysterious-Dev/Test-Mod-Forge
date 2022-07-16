@@ -1,7 +1,7 @@
 package fr.lmf.test_mod_forge.event;
 
 import fr.lmf.test_mod_forge.capability.TestCapability;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class CapabilityEvent {
