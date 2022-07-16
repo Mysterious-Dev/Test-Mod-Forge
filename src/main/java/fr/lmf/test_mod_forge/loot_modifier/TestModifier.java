@@ -20,7 +20,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class TestModifier extends LootModifier {
 
     public static final Supplier<Codec<TestModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst)
-            .and(ForgeRegistries.ITEMS.getCodec().fieldOf("seedItem").forGetter(m -> m.itemToDrop))
+            .and(ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(m -> m.itemToDrop))
             .apply(inst, TestModifier::new)
     ));
 
