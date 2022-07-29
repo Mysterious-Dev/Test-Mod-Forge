@@ -56,7 +56,6 @@ public class Main
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
-        MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(TestCapability.class);
         MinecraftForge.EVENT_BUS.register(CapabilityEvent.class);
         MinecraftForge.EVENT_BUS.register(EntityEvent.class);
