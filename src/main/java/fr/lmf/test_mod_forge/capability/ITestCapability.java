@@ -1,5 +1,8 @@
 package fr.lmf.test_mod_forge.capability;
 
+import net.minecraftforge.common.capabilities.AutoRegisterCapability;
+
+@AutoRegisterCapability
 public interface ITestCapability {
     int getPower();
 

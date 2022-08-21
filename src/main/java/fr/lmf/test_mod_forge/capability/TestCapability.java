@@ -68,10 +68,4 @@ public class TestCapability {
         });
     }
 
-
-    @SubscribeEvent
-    public void registerCaps(RegisterCapabilitiesEvent event) {
-        event.register(ITestCapability.class);
-    }
-
 }
