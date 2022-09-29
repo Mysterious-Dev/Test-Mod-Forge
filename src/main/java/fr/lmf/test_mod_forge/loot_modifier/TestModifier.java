@@ -19,15 +19,19 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class TestModifier extends LootModifier {
 
-    public static final Supplier<Codec<TestModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst)
-            .and(ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(m -> m.itemToDrop))
-            .apply(inst, TestModifier::new)
+    public static final Supplier<Codec<TestModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst).and(
+            inst.group(
+                    Codec.INT.fieldOf("quantity").forGetter(m -> m.itemQuantity),
+                    ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(m -> m.itemToDrop)
+            )).apply(inst, TestModifier::new)
     ));
 
     private final Item itemToDrop;
-    public TestModifier(final LootItemCondition[] conditionsIn, Item itemDrop) {
+    private final int itemQuantity;
+    public TestModifier(final LootItemCondition[] conditionsIn, int quantity, Item itemDrop) {
         super(conditionsIn);
         itemToDrop = itemDrop;
+        itemQuantity = quantity;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class TestModifier extends LootModifier {
         final BlockState state = context.getParamOrNull(LootContextParams.BLOCK_STATE);
 
         if (state != null && state.getBlock() instanceof DropExperienceBlock){
-            generatedLoot.add(new ItemStack(Items.COBBLESTONE));
+            generatedLoot.add(new ItemStack(itemToDrop, itemQuantity));
         }
 
         return generatedLoot;

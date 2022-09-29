@@ -16,6 +16,7 @@ public class TestGlobalLootModifierProvider extends GlobalLootModifierProvider {
         add("cobblestone_ore_drop", new TestModifier(
                     new LootItemCondition[]{
                     },
+                    4,
                     Items.COBBLESTONE
                 )
         );
