@@ -22,4 +22,6 @@ public class ModItems {
     public static final RegistryObject<Item> COLORED_ITEM = ITEMS.register("colored_item", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
     public static final RegistryObject<Item> CAPA_ITEM = ITEMS.register("test_capa_item", ()-> new TestCapaItem(new Item.Properties().tab(Main.TEST_TAB)));
 
+    public static final RegistryObject<Item> SEPARATE_PERSPECTIVE = ITEMS.register("separate_perspective", ()-> new Item(new Item.Properties().tab(Main.TEST_TAB)));
+
 }

@@ -1,10 +1,13 @@
 package fr.lmf.test_mod_forge.data.providers;
 
 import fr.lmf.test_mod_forge.Main;
+import fr.lmf.test_mod_forge.init.ModItems;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class TestItemModelProvider extends ItemModelProvider {
@@ -49,6 +52,13 @@ public class TestItemModelProvider extends ItemModelProvider {
                 .override()
                 .predicate(modLoc("test_property"), 1)
                 .model(getExistingFile(modLoc("item/property_item_full")))
+                .end();
+
+        withExistingParent(ModItems.SEPARATE_PERSPECTIVE.getId().getPath(), "forge:item/default")
+                .customLoader(SeparateTransformsModelBuilder::begin)
+                    .base(nested().parent(getExistingFile(mcLoc("item/coal"))))
+                    .perspective(ItemTransforms.TransformType.GUI, nested().parent(getExistingFile(mcLoc("item/snowball"))))
+                    .perspective(ItemTransforms.TransformType.FIXED, nested().parent(getExistingFile(mcLoc("item/diamond"))))
                 .end();
 
     }

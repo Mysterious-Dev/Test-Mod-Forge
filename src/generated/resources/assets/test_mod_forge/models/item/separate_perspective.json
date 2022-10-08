@@ -1,0 +1,15 @@
+{
+  "parent": "forge:item/default",
+  "base": {
+    "parent": "minecraft:item/coal"
+  },
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "fixed": {
+      "parent": "minecraft:item/diamond"
+    },
+    "gui": {
+      "parent": "minecraft:item/snowball"
+    }
+  }
+}

@@ -25,6 +25,8 @@ public class TestLangProvider extends LanguageProvider {
 
         add(ModItems.CAPA_ITEM.get(), "Test Capa Item");
 
+        add(ModItems.SEPARATE_PERSPECTIVE.get(), "Separate Perspective");
+
         add("itemGroup.test_tab", "Test Tab");
     }
 }

@@ -1,9 +1,10 @@
-// 1.19.2	2022-09-24T13:28:55.9316442	Item Models: test_mod_forge
+// 1.19.2	2022-10-08T16:48:37.2073732	Item Models: test_mod_forge
 ccd7afb82d81211d7775afcc0ec409d780530002 assets/test_mod_forge/models/item/animated_item.json
 ca728c5785fae9b3489b8723f084f02b1f70c656 assets/test_mod_forge/models/item/animated_item_interpolated.json
 a0fd69f9df102a9612c4b1876e57b33d65bdc9a9 assets/test_mod_forge/models/item/colored_item.json
 01b247ba509c3b61f610a4512bf6bc1295f06783 assets/test_mod_forge/models/item/property_item.json
 0a6a0bc65ed472cc90698dc6342b85f7a6c93657 assets/test_mod_forge/models/item/property_item_full.json
+86e7d33454eec1a86ed43f320209a9aaf0bfc515 assets/test_mod_forge/models/item/separate_perspective.json
 770fa6f4b9d41989becaa9e68e53e04e02892e36 assets/test_mod_forge/models/item/test_capa_item.json
 6f34748361552e219bd9be0a8a6b5a4b9569c75b assets/test_mod_forge/models/item/test_pickaxe.json
 93bebfe4b841f3dc748be3a4053ee8be39325f8c assets/test_mod_forge/models/item/test_simple_block.json
