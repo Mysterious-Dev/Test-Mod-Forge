@@ -5,6 +5,7 @@ import fr.lmf.test_mod_forge.capability.TestCapability;
 import fr.lmf.test_mod_forge.entity.client.TestEntityRenderer;
 import fr.lmf.test_mod_forge.event.CapabilityEvent;
 import fr.lmf.test_mod_forge.event.EntityEvent;
+import fr.lmf.test_mod_forge.event.ServerEvent;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModEntities;
 import fr.lmf.test_mod_forge.init.ModItems;
@@ -59,9 +60,15 @@ public class Main
         MinecraftForge.EVENT_BUS.register(TestCapability.class);
         MinecraftForge.EVENT_BUS.register(CapabilityEvent.class);
         MinecraftForge.EVENT_BUS.register(EntityEvent.class);
+        MinecraftForge.EVENT_BUS.register(ServerEvent.class);
 
-        FileUtils.getOrCreateDirectory(FMLPaths.CONFIGDIR.get().resolve(MODID), MODID);
-        ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, ModConfig.CLIENT_CONFIG.build());
+        ModLoadingContext modLoadingContext = ModLoadingContext.get();
+
+        final String configFolder = "prepvid/";
+
+        modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, ModConfig.clientSpec, configFolder + "client.toml");
+        modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, ModConfig.serverSpec, configFolder + "server.toml");
+        modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, ModConfig.commonSpec, configFolder + "common.toml");
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ModLootModifiers.GLM.register(bus);
