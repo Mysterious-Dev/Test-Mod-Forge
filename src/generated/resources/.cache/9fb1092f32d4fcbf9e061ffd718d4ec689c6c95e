@@ -1,11 +1,11 @@
-// 1.19.3	2022-12-08T13:56:15.8416227	Recipes
+// 1.19.3	2022-12-08T16:55:01.9738182	Recipes
+55a1b04a983f82c96d870b2e7c6ce1e05ad7a42d data/minecraft/advancements/recipes/building_blocks/test_smithing_recipe.json
 e4abdfd0e10f22ad5d994b93f985dea20d5c6b57 data/minecraft/advancements/recipes/misc/diamond.json
 08f28a43a4b28bb10084d42b0c77e3e286da3ecd data/minecraft/advancements/recipes/misc/iron_ingot.json
 0af97e2295fa7778d23c5d15a66ab63166a0ea82 data/minecraft/advancements/recipes/misc/iron_ingot_blasting.json
 e504bde9bbfc40da990a6f5c8441976ea90ad4f9 data/minecraft/advancements/recipes/misc/iron_ingot_smelting.json
 140cfb815e1a7c6d3e02457ad18db9e7c49125ad data/minecraft/advancements/recipes/misc/iron_ingot_smoking.json
 6b4d6e72faa84e34d8ed4b40ec969ce32b1a807d data/minecraft/advancements/recipes/misc/netherite_ingot.json
-55a1b04a983f82c96d870b2e7c6ce1e05ad7a42d data/minecraft/advancements/recipes/misc/test_smithing_recipe.json
 7a49f534a1ea0c3ace7640cf62cd37d52a75195b data/minecraft/recipes/diamond.json
 00eb2f314c30c0da9afa0821244ae756d423c49c data/minecraft/recipes/iron_ingot.json
 41f607be2e2d9d2f83bee1fe76d339148f021f7f data/minecraft/recipes/iron_ingot_blasting.json

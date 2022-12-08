@@ -1,0 +1,4 @@
+// 1.19.3	2022-12-08T16:55:01.9698164	Tags for minecraft:block mod id test_mod_forge
+4bf08f8b7056c58ad80457c9344eb42ae4134ac2 data/minecraft/tags/blocks/mineable/pickaxe.json
+4bf08f8b7056c58ad80457c9344eb42ae4134ac2 data/minecraft/tags/blocks/needs_diamond_tool.json
+4bf08f8b7056c58ad80457c9344eb42ae4134ac2 data/test_mod_forge/tags/blocks/test_tool_type.json
