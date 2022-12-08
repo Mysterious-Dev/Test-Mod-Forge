@@ -11,10 +11,4 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 public class ModPools {
 
-    public static final Holder<StructureTemplatePool> START = Pools.register(new StructureTemplatePool(new ResourceLocation("oak_abandonned_house"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(StructurePoolElement.legacy(Main.MODID + ":oak_abandonned_house"), 1)), StructureTemplatePool.Projection.RIGID));
-
-    static {
-
-    }
-
 }

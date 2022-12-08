@@ -1,19 +1,19 @@
 package fr.lmf.test_mod_forge.data.providers.loots;
 
 import fr.lmf.test_mod_forge.init.ModBlocks;
-import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
 
-public class TestBlockLoots extends BlockLoot {
+import java.util.Set;
 
-    @Override
-    protected void addTables() {
-        dropSelf(ModBlocks.TEST_SIMPLE_BLOCK.get());
+public class TestBlockLoots extends BlockLootSubProvider {
+
+    public TestBlockLoots() {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+    protected void generate() {
+        dropSelf(ModBlocks.TEST_SIMPLE_BLOCK.get());
     }
 }

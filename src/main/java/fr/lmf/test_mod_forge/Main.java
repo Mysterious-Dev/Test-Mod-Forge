@@ -15,11 +15,15 @@ import fr.lmf.test_mod_forge.utils.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +39,7 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.loading.FileUtils;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Mod(Main.MODID)
@@ -42,13 +47,6 @@ public class Main
 {
     public static final String MODID = "test_mod_forge";
     private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static final CreativeModeTab TEST_TAB = new CreativeModeTab("test_tab") {
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(Items.DIAMOND);
-        }
-    };
 
     public Main()
     {
@@ -71,6 +69,10 @@ public class Main
         modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, ModConfig.commonSpec, configFolder + "common.toml");
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCreativeModeTabRegister);
+        bus.addListener(this::onCreativeModeTabBuildContents);
+
         ModLootModifiers.GLM.register(bus);
         ModBlocks.BLOCKS.register(bus);
         ModBlocks.BLOCK_ITEMS.register(bus);
@@ -117,5 +119,37 @@ public class Main
     public void onServerStarting(ServerStartingEvent event)
     {
         LOGGER.info("HELLO from server starting");
+    }
+
+    private void onCreativeModeTabRegister(CreativeModeTabEvent.Register event)
+    {
+
+
+        CreativeModeTab TEST_TAB = event.registerCreativeModeTab(new ResourceLocation(MODID, "test_tab"), List.of(), List.of(CreativeModeTabs.SPAWN_EGGS), builder -> builder
+                .icon(() -> new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()))
+                .title(Component.literal("Stone"))
+                .withLabelColor(0x0000FF)
+                .displayItems((features, output, hasPermissions) -> {
+                    output.accept(new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()));
+                    output.accept(new ItemStack(ModBlocks.TEST_VOXEL_SHAPE_BLOCK.get()));
+                    output.accept(new ItemStack(ModItems.CAPA_ITEM.get()));
+                    output.accept(new ItemStack(ModItems.ANIMATED_ITEM.get()));
+                    output.accept(new ItemStack(ModItems.COLORED_ITEM.get()));
+                    output.accept(new ItemStack(ModItems.PROPERTY_ITEM.get()));
+                    output.accept(new ItemStack(ModItems.ANIMATED_ITEM_INTERPOLATED.get()));
+                    output.accept(new ItemStack(ModItems.SEPARATE_PERSPECTIVE.get()));
+                    output.accept(new ItemStack(ModItems.TEST_PICKAXE.get()));
+                    output.accept(new ItemStack(ModItems.TEST_TOOL.get()));
+                }));
+    }
+
+    public void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event)
+    {
+        if (event.getTab() == CreativeModeTabs.NATURAL_BLOCKS)
+        {
+            event.register((flags, builder, hasPermissions) -> {
+                builder.accept(new ItemStack(Blocks.STRIPPED_ACACIA_LOG), ItemStack.EMPTY, new ItemStack(Blocks.STONE));
+            });
+        }
     }
 }

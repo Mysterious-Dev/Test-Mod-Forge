@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#minecraft:is_badlands",
-  "features": "minecraft:large_basalt_columns",
-  "step": "top_layer_modification"
-}
