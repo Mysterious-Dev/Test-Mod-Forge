@@ -131,7 +131,7 @@ public class Main
                 .withLabelColor(0x0000FF)
                 .displayItems((features, output, hasPermissions) -> {
                     output.accept(new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()));
-                    output.accept(new ItemStack(ModBlocks.TEST_VOXEL_SHAPE_BLOCK.get()));
+                    //output.accept(new ItemStack(ModBlocks.TEST_VOXEL_SHAPE_BLOCK.get()));
                     output.accept(new ItemStack(ModItems.CAPA_ITEM.get()));
                     output.accept(new ItemStack(ModItems.ANIMATED_ITEM.get()));
                     output.accept(new ItemStack(ModItems.COLORED_ITEM.get()));
