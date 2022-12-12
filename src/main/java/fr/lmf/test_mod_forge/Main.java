@@ -146,10 +146,6 @@ public class Main
     public void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event)
     {
         if (event.getTab() == CreativeModeTabs.NATURAL_BLOCKS)
-        {
-            event.register((flags, builder, hasPermissions) -> {
-                builder.accept(new ItemStack(Blocks.STRIPPED_ACACIA_LOG), ItemStack.EMPTY, new ItemStack(Blocks.STONE));
-            });
-        }
+            event.accept(Blocks.REDSTONE_BLOCK);
     }
 }
