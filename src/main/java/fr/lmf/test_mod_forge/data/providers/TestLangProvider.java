@@ -3,11 +3,12 @@ package fr.lmf.test_mod_forge.data.providers;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModItems;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class TestLangProvider extends LanguageProvider {
-    public TestLangProvider(DataGenerator gen, String modid, String locale) {
-        super(gen, modid, locale);
+    public TestLangProvider(PackOutput packOutput, String modid, String locale) {
+        super(packOutput, modid, locale);
     }
 
     @Override

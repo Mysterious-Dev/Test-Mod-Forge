@@ -37,11 +37,11 @@ public class ModDataGenerator {
 
         DataGenerator generator = event.getGenerator();
 
-        generator.addProvider(event.includeClient(), new TestLangProvider(generator, Main.MODID, "en_us"));
-        generator.addProvider(event.includeClient(), new TestItemModelProvider(generator, Main.MODID, event.getExistingFileHelper()));
-        generator.addProvider(event.includeClient(), new TestBlockstateProvider(generator, Main.MODID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new TestLangProvider(generator.getPackOutput(), Main.MODID, "en_us"));
+        generator.addProvider(event.includeClient(), new TestItemModelProvider(generator.getPackOutput(), Main.MODID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeClient(), new TestBlockstateProvider(generator.getPackOutput(), Main.MODID, event.getExistingFileHelper()));
 
-        generator.addProvider(event.includeServer(), new TestGlobalLootModifierProvider(generator, Main.MODID));
+        generator.addProvider(event.includeServer(), new TestGlobalLootModifierProvider(generator.getPackOutput(), Main.MODID));
         generator.addProvider(event.includeServer(), new TestBlockTagProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
         generator.addProvider(event.includeServer(), new TestBiomeTagsProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
         /*TODO Corriger le générateur pour les loot tables*/
