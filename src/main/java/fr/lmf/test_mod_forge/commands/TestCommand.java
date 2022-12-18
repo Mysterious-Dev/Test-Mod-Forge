@@ -62,7 +62,8 @@ public class TestCommand {
     {
         ServerLevel serverlevel = src.getLevel();
 
-        serverlevel.setBlock(pos, Blocks.FIRE.defaultBlockState(), 1);
+       if(!serverlevel.isClientSide)
+           serverlevel.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
 
         src.sendSuccess(Component.translatable("commands.banlist.none"), false);
 
