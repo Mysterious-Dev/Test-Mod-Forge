@@ -5,7 +5,6 @@ import fr.lmf.test_mod_forge.capability.TestCapability;
 import fr.lmf.test_mod_forge.entity.client.TestEntityRenderer;
 import fr.lmf.test_mod_forge.event.CapabilityEvent;
 import fr.lmf.test_mod_forge.event.EntityEvent;
-import fr.lmf.test_mod_forge.event.ServerEvent;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModEntities;
 import fr.lmf.test_mod_forge.init.ModItems;
@@ -20,7 +19,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -35,8 +33,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.fml.loading.FileUtils;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -58,7 +54,6 @@ public class Main
         MinecraftForge.EVENT_BUS.register(TestCapability.class);
         MinecraftForge.EVENT_BUS.register(CapabilityEvent.class);
         MinecraftForge.EVENT_BUS.register(EntityEvent.class);
-        MinecraftForge.EVENT_BUS.register(ServerEvent.class);
 
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
