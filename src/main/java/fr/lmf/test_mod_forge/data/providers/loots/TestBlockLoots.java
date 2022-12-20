@@ -18,6 +18,7 @@ public class TestBlockLoots extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(ModBlocks.TEST_SIMPLE_BLOCK.get());
+        dropSelf(ModBlocks.TEST_BLOCKSTATE_BLOCK.get());
     }
 
     @Override

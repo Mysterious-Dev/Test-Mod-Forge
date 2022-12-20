@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "test_property=false": {
+      "model": "test_mod_forge:block/test_blockstate_block"
+    },
+    "test_property=true": {
+      "model": "test_mod_forge:block/test_blockstate_block_activated"
+    }
+  }
+}

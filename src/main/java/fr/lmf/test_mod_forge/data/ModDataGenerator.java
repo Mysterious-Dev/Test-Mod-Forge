@@ -1,15 +1,18 @@
 package fr.lmf.test_mod_forge.data;
 
+import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import fr.lmf.test_mod_forge.Main;
 import fr.lmf.test_mod_forge.data.providers.*;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.packs.VanillaLootTableProvider;
+import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.biome.OverworldBiomes;
+import net.minecraft.resources.RegistryDataLoader;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -17,17 +20,20 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DataPackRegistriesHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = Main.MODID)
 public class ModDataGenerator {
@@ -48,6 +54,41 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), TestLootTableProvider.create(generator.getPackOutput()));
         generator.addProvider(event.includeServer(), new TestRecipeProvider(generator.getPackOutput()));
 
+        //generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(generator.getPackOutput(), event.getLookupProvider().thenApply(ModDataGenerator::createLookup)::join, Set.of(Main.MODID)));
+
+    }
+
+    private static HolderLookup.Provider createLookup(final HolderLookup.Provider vanillaLookupProvider) {
+        final var registryAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
+
+        final var builder = new RegistrySetBuilder()
+                .add(Registries.BIOME, ModDataGenerator::bootstrap);
+
+        @SuppressWarnings("UnstableApiUsage")
+        final var allKeys = DataPackRegistriesHooks.getDataPackRegistries()
+                .stream()
+                .map(RegistryDataLoader.RegistryData::key)
+                .collect(Collectors.toSet());
+
+        final var modKeys = Set.copyOf(builder.getEntryKeys());
+
+        final var missingKeys = Sets.difference(allKeys, modKeys);
+
+        missingKeys.forEach(key -> builder.add(
+                ResourceKey.create(ResourceKey.createRegistryKey(key.registry()), key.location()),
+                context -> {
+                }
+        ));
+
+        return builder.buildPatch(registryAccess, vanillaLookupProvider);
+    }
+
+    public static void bootstrap(final BootstapContext<Biome> context) {
+        final var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        final var configuredWorldCarvers = context.lookup(Registries.CONFIGURED_CARVER);
+
+        // TODO: Figure out SurfaceRules to replace SurfaceBuilders
+        context.register(ResourceKey.create(Registries.BIOME, new ResourceLocation(Main.MODID, "test_desert")), OverworldBiomes.desert(placedFeatures, configuredWorldCarvers));
     }
 
 }
