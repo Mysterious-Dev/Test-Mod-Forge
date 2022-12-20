@@ -29,21 +29,13 @@ public class TestItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/handheld"))
                 .texture("layer0", new ResourceLocation(Main.MODID, "item/test_pickaxe"));
 
-        getBuilder("animated_item_interpolated")
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", new ResourceLocation(Main.MODID, "item/animated_item_interpolated"));
+        basicItem(ModItems.ANIMATED_ITEM_INTERPOLATED.get());
 
-        getBuilder("animated_item")
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", new ResourceLocation(Main.MODID, "item/animated_item"));
+        basicItem(ModItems.ANIMATED_ITEM.get());
 
-        getBuilder("test_capa_item")
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", new ResourceLocation(Main.MODID, "item/test_capa_item"));
+        basicItem(ModItems.CAPA_ITEM.get());
 
-        getBuilder("colored_item")
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", new ResourceLocation(Main.MODID, "item/colored_item"));
+        basicItem(ModItems.COLORED_ITEM.get());
 
         getBuilder(ForgeRegistries.BLOCKS.getKey(ModBlocks.TEST_BLOCKSTATE_BLOCK.get()).getPath())
                 .parent(new ModelFile.UncheckedModelFile(new ResourceLocation(Main.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(ModBlocks.TEST_BLOCKSTATE_BLOCK.get()).getPath())));
