@@ -14,6 +14,7 @@ public class TestLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(ModBlocks.TEST_SIMPLE_BLOCK.get(), "Test Simple Block");
+        add(ModBlocks.TEST_BLOCKSTATE_BLOCK.get(), "Test Blockstate Block");
 
         add(ModItems.TEST_PICKAXE.get(), "Test Pickaxe");
         add(ModItems.TEST_TOOL.get(), "Test Tool");

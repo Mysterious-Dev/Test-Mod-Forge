@@ -1,6 +1,7 @@
 package fr.lmf.test_mod_forge.data.providers;
 
 import fr.lmf.test_mod_forge.Main;
+import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModItems;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.data.DataGenerator;
@@ -10,6 +11,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class TestItemModelProvider extends ItemModelProvider {
     public TestItemModelProvider(PackOutput packOutput, String modid, ExistingFileHelper existingFileHelper) {
@@ -42,6 +44,9 @@ public class TestItemModelProvider extends ItemModelProvider {
         getBuilder("colored_item")
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", new ResourceLocation(Main.MODID, "item/colored_item"));
+
+        getBuilder(ForgeRegistries.BLOCKS.getKey(ModBlocks.TEST_BLOCKSTATE_BLOCK.get()).getPath())
+                .parent(new ModelFile.UncheckedModelFile(new ResourceLocation(Main.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(ModBlocks.TEST_BLOCKSTATE_BLOCK.get()).getPath())));
 
         ModelFile propertyItemFull = withExistingParent("property_item_full", "item/generated")
                 .texture("layer0", modLoc("item/property_item_full"));

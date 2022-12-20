@@ -1,4 +1,5 @@
 {
+  "block.test_mod_forge.test_blockstate_block": "Test Blockstate Block",
   "block.test_mod_forge.test_simple_block": "Test Simple Block",
   "item.test_mod_forge.animated_item": "Animated Item",
   "item.test_mod_forge.animated_item_interpolated": "Animated Item Interpolated",
