@@ -9,5 +9,6 @@
   "item.test_mod_forge.test_capa_item": "Test Capa Item",
   "item.test_mod_forge.test_pickaxe": "Test Pickaxe",
   "item.test_mod_forge.test_tool": "Test Tool",
-  "itemGroup.test_tab": "Test Tab"
+  "itemGroup.test_tab": "Test Tab",
+  "pack.test_mod_forge.description": "Resources and data for Test Mod Forge"
 }

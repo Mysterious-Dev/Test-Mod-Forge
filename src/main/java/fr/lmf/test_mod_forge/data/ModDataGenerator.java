@@ -54,6 +54,8 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), TestLootTableProvider.create(generator.getPackOutput()));
         generator.addProvider(event.includeServer(), new TestRecipeProvider(generator.getPackOutput()));
 
+        generator.addProvider(true, TestPackMetadataProvider.create(generator.getPackOutput()));
+
         //generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(generator.getPackOutput(), event.getLookupProvider().thenApply(ModDataGenerator::createLookup)::join, Set.of(Main.MODID)));
 
     }
