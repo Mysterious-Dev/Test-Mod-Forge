@@ -121,7 +121,7 @@ public class Main
 
         CreativeModeTab TEST_TAB = event.registerCreativeModeTab(new ResourceLocation(MODID, "test_tab"), List.of(), List.of(CreativeModeTabs.SPAWN_EGGS), builder -> builder
                 .icon(() -> new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()))
-                .title(Component.literal("Stone"))
+                .title(Component.translatable("itemGroup.test_tab"))
                 .withLabelColor(0x0000FF)
                 .displayItems((features, output, hasPermissions) -> {
                     output.accept(new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()));
@@ -129,11 +129,13 @@ public class Main
                     //output.accept(new ItemStack(ModBlocks.TEST_VOXEL_SHAPE_BLOCK.get()));
                     output.accept(new ItemStack(ModItems.CAPA_ITEM.get()));
                     output.accept(new ItemStack(ModItems.ANIMATED_ITEM.get()));
-                    output.accept(new ItemStack(ModItems.COLORED_ITEM.get()));
-                    output.accept(new ItemStack(ModItems.PROPERTY_ITEM.get()));
                     output.accept(new ItemStack(ModItems.ANIMATED_ITEM_INTERPOLATED.get()));
                     output.accept(new ItemStack(ModItems.SEPARATE_PERSPECTIVE.get()));
                     output.accept(new ItemStack(ModItems.TEST_PICKAXE.get()));
+                    if(hasPermissions){
+                        output.accept(new ItemStack(ModItems.COLORED_ITEM.get()));
+                        output.accept(new ItemStack(ModItems.PROPERTY_ITEM.get()));
+                    }
                     output.accept(new ItemStack(ModItems.TEST_TOOL.get()));
                 }));
     }
