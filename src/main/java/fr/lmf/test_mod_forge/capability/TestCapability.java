@@ -37,7 +37,7 @@ public class TestCapability {
     }
 
     @SubscribeEvent
-    public void onPlayerSpawn(PlayerEvent.PlayerLoggedInEvent e)
+    public static void onPlayerSpawn(PlayerEvent.PlayerLoggedInEvent e)
     {
         Player p = e.getEntity();
 
@@ -47,7 +47,7 @@ public class TestCapability {
     }
 
     @SubscribeEvent
-    public void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent e)
+    public static void onPlayerChangeDimension(PlayerEvent.PlayerChangedDimensionEvent e)
     {
         Player p = e.getEntity();
 
@@ -59,7 +59,7 @@ public class TestCapability {
 
 
     @SubscribeEvent
-    public void onInteract(PlayerEvent.PlayerRespawnEvent e)
+    public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent e)
     {
         Player p = e.getEntity();
 
