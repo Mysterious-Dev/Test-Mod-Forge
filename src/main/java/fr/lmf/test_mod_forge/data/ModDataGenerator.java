@@ -52,40 +52,20 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), new TestGlobalLootModifierProvider(generator.getPackOutput(), Main.MODID));
         generator.addProvider(event.includeServer(), new TestBlockTagProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
         generator.addProvider(event.includeServer(), new TestBiomeTagsProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
-        /*TODO Corriger le générateur pour les loot tables*/
         generator.addProvider(event.includeServer(), TestLootTableProvider.create(generator.getPackOutput()));
         generator.addProvider(event.includeServer(), new TestRecipeProvider(generator.getPackOutput()));
         generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper(), List.of(new TestAdvancementProvider())));
 
         generator.addProvider(true, TestPackMetadataProvider.create(generator.getPackOutput()));
 
-        //generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(generator.getPackOutput(), event.getLookupProvider().thenApply(ModDataGenerator::createLookup)::join, Set.of(Main.MODID)));
+        generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(generator.getPackOutput(), event.getLookupProvider(), createLookup(), Set.of(Main.MODID)));
 
     }
 
-    private static HolderLookup.Provider createLookup(final HolderLookup.Provider vanillaLookupProvider) {
-        final var registryAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-
-        final var builder = new RegistrySetBuilder()
+    private static RegistrySetBuilder createLookup() {
+        final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
                 .add(Registries.BIOME, ModDataGenerator::bootstrap);
-
-        @SuppressWarnings("UnstableApiUsage")
-        final var allKeys = DataPackRegistriesHooks.getDataPackRegistries()
-                .stream()
-                .map(RegistryDataLoader.RegistryData::key)
-                .collect(Collectors.toSet());
-
-        final var modKeys = Set.copyOf(builder.getEntryKeys());
-
-        final var missingKeys = Sets.difference(allKeys, modKeys);
-
-        missingKeys.forEach(key -> builder.add(
-                ResourceKey.create(ResourceKey.createRegistryKey(key.registry()), key.location()),
-                context -> {
-                }
-        ));
-
-        return builder.buildPatch(registryAccess, vanillaLookupProvider);
+        return BUILDER;
     }
 
     public static void bootstrap(final BootstapContext<Biome> context) {
