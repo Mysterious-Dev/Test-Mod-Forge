@@ -50,7 +50,6 @@ public class ModDataGenerator {
         generator.addProvider(event.includeServer(), new TestGlobalLootModifierProvider(generator.getPackOutput(), Main.MODID));
         generator.addProvider(event.includeServer(), new TestBlockTagProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
         generator.addProvider(event.includeServer(), new TestBiomeTagsProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper()));
-        /*TODO Corriger le générateur pour les loot tables*/
         generator.addProvider(event.includeServer(), TestLootTableProvider.create(generator.getPackOutput()));
         generator.addProvider(event.includeServer(), new TestRecipeProvider(generator.getPackOutput()));
 
