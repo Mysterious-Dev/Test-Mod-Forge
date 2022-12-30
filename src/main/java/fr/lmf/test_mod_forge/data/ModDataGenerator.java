@@ -21,6 +21,7 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.minecraftforge.common.data.ForgeAdvancementProvider;
 import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
@@ -30,6 +31,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DataPackRegistriesHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -53,6 +55,7 @@ public class ModDataGenerator {
         /*TODO Corriger le générateur pour les loot tables*/
         generator.addProvider(event.includeServer(), TestLootTableProvider.create(generator.getPackOutput()));
         generator.addProvider(event.includeServer(), new TestRecipeProvider(generator.getPackOutput()));
+        generator.addProvider(event.includeServer(), new ForgeAdvancementProvider(generator.getPackOutput(), event.getLookupProvider(), event.getExistingFileHelper(), List.of(new TestAdvancementProvider())));
 
         generator.addProvider(true, TestPackMetadataProvider.create(generator.getPackOutput()));
 
