@@ -10,5 +10,6 @@
   "item.test_mod_forge.test_pickaxe": "Test Pickaxe",
   "item.test_mod_forge.test_tool": "Test Tool",
   "itemGroup.test_tab": "Test Tab",
-  "pack.test_mod_forge.description": "Resources and data for Test Mod Forge"
+  "pack.test_mod_forge.description": "Resources and data for Test Mod Forge",
+  "tooltip.test_mod_forge.power": "Your Power : %s"
 }

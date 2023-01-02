@@ -29,6 +29,7 @@ public class TestLangProvider extends LanguageProvider {
 
         add(ModItems.SEPARATE_PERSPECTIVE.get(), "Separate Perspective");
 
+        add("tooltip.test_mod_forge.power", "Your Power : %s");
         add("itemGroup.test_tab", "Test Tab");
 
         add("pack.test_mod_forge.description", "Resources and data for Test Mod Forge");
