@@ -1,9 +1,7 @@
 package fr.lmf.test_mod_forge;
 
 import com.mojang.logging.LogUtils;
-import fr.lmf.test_mod_forge.capability.TestCapability;
 import fr.lmf.test_mod_forge.entity.client.TestEntityRenderer;
-import fr.lmf.test_mod_forge.event.CapabilityEvent;
 import fr.lmf.test_mod_forge.event.EntityEvent;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModEntities;
@@ -51,7 +49,6 @@ public class Main
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
-        MinecraftForge.EVENT_BUS.register(TestCapability.class);
         MinecraftForge.EVENT_BUS.register(EntityEvent.class);
 
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
