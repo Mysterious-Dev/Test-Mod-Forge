@@ -2,7 +2,6 @@ package fr.lmf.test_mod_forge;
 
 import com.mojang.logging.LogUtils;
 import fr.lmf.test_mod_forge.entity.client.TestEntityRenderer;
-import fr.lmf.test_mod_forge.event.EntityEvent;
 import fr.lmf.test_mod_forge.init.ModBlocks;
 import fr.lmf.test_mod_forge.init.ModEntities;
 import fr.lmf.test_mod_forge.init.ModItems;
@@ -18,7 +17,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -48,8 +46,6 @@ public class Main
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-
-        MinecraftForge.EVENT_BUS.register(EntityEvent.class);
 
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
