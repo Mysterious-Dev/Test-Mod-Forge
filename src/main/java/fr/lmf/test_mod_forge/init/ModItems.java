@@ -2,6 +2,7 @@ package fr.lmf.test_mod_forge.init;
 
 import fr.lmf.test_mod_forge.Main;
 import fr.lmf.test_mod_forge.items.TestCapaItem;
+import fr.lmf.test_mod_forge.items.TestNbtItem;
 import fr.lmf.test_mod_forge.items.TestToolItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
@@ -22,5 +23,6 @@ public class ModItems {
     public static final RegistryObject<Item> COLORED_ITEM = ITEMS.register("colored_item", ()-> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CAPA_ITEM = ITEMS.register("test_capa_item", ()-> new TestCapaItem(new Item.Properties()));
     public static final RegistryObject<Item> SEPARATE_PERSPECTIVE = ITEMS.register("separate_perspective", ()-> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TEST_NBT = ITEMS.register("test_nbt", ()-> new TestNbtItem(new Item.Properties()));
 
 }

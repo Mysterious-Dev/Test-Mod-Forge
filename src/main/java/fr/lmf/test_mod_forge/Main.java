@@ -130,6 +130,7 @@ public class Main
                         output.accept(new ItemStack(ModItems.PROPERTY_ITEM.get()));
                     }
                     output.accept(new ItemStack(ModItems.TEST_TOOL.get()));
+                    output.accept(new ItemStack(ModItems.TEST_NBT.get()));
                 }));
     }
 
