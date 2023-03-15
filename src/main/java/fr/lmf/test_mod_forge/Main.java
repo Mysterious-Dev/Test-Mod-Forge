@@ -49,7 +49,7 @@ public class Main
 
         ModLoadingContext modLoadingContext = ModLoadingContext.get();
 
-        final String configFolder = "prepvid/";
+        final String configFolder = "test_mod_forge/";
 
         modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, ModConfig.clientSpec, configFolder + "client.toml");
         modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.SERVER, ModConfig.serverSpec, configFolder + "server.toml");
@@ -116,19 +116,21 @@ public class Main
                 .icon(() -> new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()))
                 .title(Component.translatable("itemGroup.test_tab"))
                 .withLabelColor(0x0000FF)
-                .displayItems((features, output) -> {
+                .displayItems((displayParameters, output) -> {
                     output.accept(new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()));
                     output.accept(new ItemStack(ModBlocks.TEST_BLOCKSTATE_BLOCK.get()));
                     //output.accept(new ItemStack(ModBlocks.TEST_VOXEL_SHAPE_BLOCK.get()));
                     output.accept(new ItemStack(ModItems.CAPA_ITEM.get()));
                     output.accept(new ItemStack(ModItems.ANIMATED_ITEM.get()));
+                    if(displayParameters.hasPermissions()){
+                        output.accept(new ItemStack(ModItems.TEST_NBT.get()));
+                    }
                     output.accept(new ItemStack(ModItems.ANIMATED_ITEM_INTERPOLATED.get()));
                     output.accept(new ItemStack(ModItems.SEPARATE_PERSPECTIVE.get()));
                     output.accept(new ItemStack(ModItems.TEST_PICKAXE.get()));
                     output.accept(new ItemStack(ModItems.COLORED_ITEM.get()));
                     output.accept(new ItemStack(ModItems.PROPERTY_ITEM.get()));
                     output.accept(new ItemStack(ModItems.TEST_TOOL.get()));
-                    output.accept(new ItemStack(ModItems.TEST_NBT.get()));
                 }));
     }
 
