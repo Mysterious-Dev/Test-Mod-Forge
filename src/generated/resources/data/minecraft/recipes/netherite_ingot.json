@@ -21,5 +21,6 @@
   "result": {
     "count": 16,
     "item": "minecraft:netherite_ingot"
-  }
+  },
+  "show_notification": true
 }
