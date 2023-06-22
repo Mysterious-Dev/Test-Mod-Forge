@@ -5,6 +5,8 @@ import fr.lmf.test_mod_forge.data.providers.loots.TestBlockLoots;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.LootDataId;
+import net.minecraft.world.level.storage.loot.LootDataType;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -26,6 +28,6 @@ public class TestLootTableProvider extends LootTableProvider {
 
     @Override
     protected void validate(final Map<ResourceLocation, LootTable> map, final ValidationContext validationContext) {
-        //map.forEach((id, table) -> LootTables.validate(validationContext, id, table));
+        map.forEach((id, table) -> table.validate(validationContext.setParams(table.getParamSet()).enterElement("{" + id + "}", new LootDataId<>(LootDataType.TABLE, id))));
     }
 }
