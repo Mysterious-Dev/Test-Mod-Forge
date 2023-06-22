@@ -16,5 +16,6 @@
       ],
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "test_mod_forge:blocks/test_blockstate_block"
 }

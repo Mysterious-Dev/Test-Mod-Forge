@@ -1,3 +1,3 @@
-// 1.19.4	2023-03-15T13:59:56.4464306	Loot Tables
-5d2e988d1de1f2ec2f5ff5b10a193de4194f2ea4 data/test_mod_forge/loot_tables/blocks/test_blockstate_block.json
-5bb37e08ac0494bce02c27ad59cea8329c80f298 data/test_mod_forge/loot_tables/blocks/test_simple_block.json
+// 1.20.1	2023-06-22T19:55:13.1572942	Loot Tables
+8f8450179872bf5b983f86e9f2c6b24ff1592c58 data/test_mod_forge/loot_tables/blocks/test_blockstate_block.json
+f6a8d962882a2dded16276294bc216badc310315 data/test_mod_forge/loot_tables/blocks/test_simple_block.json

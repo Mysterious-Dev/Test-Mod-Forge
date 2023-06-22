@@ -2,10 +2,7 @@ package fr.lmf.test_mod_forge;
 
 import com.mojang.logging.LogUtils;
 import fr.lmf.test_mod_forge.entity.client.TestEntityRenderer;
-import fr.lmf.test_mod_forge.init.ModBlocks;
-import fr.lmf.test_mod_forge.init.ModEntities;
-import fr.lmf.test_mod_forge.init.ModItems;
-import fr.lmf.test_mod_forge.init.ModLootModifiers;
+import fr.lmf.test_mod_forge.init.*;
 import fr.lmf.test_mod_forge.network.NetworkInit;
 import fr.lmf.test_mod_forge.utils.ModConfig;
 import net.minecraft.client.Minecraft;
@@ -17,7 +14,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -56,14 +53,14 @@ public class Main
         modLoadingContext.registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, ModConfig.commonSpec, configFolder + "common.toml");
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCreativeModeTabRegister);
+        
         bus.addListener(this::onCreativeModeTabBuildContents);
 
         ModLootModifiers.GLM.register(bus);
         ModBlocks.BLOCKS.register(bus);
         ModBlocks.BLOCK_ITEMS.register(bus);
         ModItems.ITEMS.register(bus);
+        ModCreativeTabs.CREATIVE_MODE_TABS.register(bus);
 
         ModEntities.ENTITY_TYPES.register(bus);
 
@@ -108,35 +105,9 @@ public class Main
         LOGGER.info("HELLO from server starting");
     }
 
-    private void onCreativeModeTabRegister(CreativeModeTabEvent.Register event)
+    public void onCreativeModeTabBuildContents(BuildCreativeModeTabContentsEvent event)
     {
-
-
-        CreativeModeTab TEST_TAB = event.registerCreativeModeTab(new ResourceLocation(MODID, "test_tab"), List.of(), List.of(CreativeModeTabs.SPAWN_EGGS), builder -> builder
-                .icon(() -> new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()))
-                .title(Component.translatable("itemGroup.test_tab"))
-                .withLabelColor(0x0000FF)
-                .displayItems((displayParameters, output) -> {
-                    output.accept(new ItemStack(ModBlocks.TEST_SIMPLE_BLOCK.get()));
-                    output.accept(new ItemStack(ModBlocks.TEST_BLOCKSTATE_BLOCK.get()));
-                    //output.accept(new ItemStack(ModBlocks.TEST_VOXEL_SHAPE_BLOCK.get()));
-                    output.accept(new ItemStack(ModItems.CAPA_ITEM.get()));
-                    output.accept(new ItemStack(ModItems.ANIMATED_ITEM.get()));
-                    if(displayParameters.hasPermissions()){
-                        output.accept(new ItemStack(ModItems.TEST_NBT.get()));
-                    }
-                    output.accept(new ItemStack(ModItems.ANIMATED_ITEM_INTERPOLATED.get()));
-                    output.accept(new ItemStack(ModItems.SEPARATE_PERSPECTIVE.get()));
-                    output.accept(new ItemStack(ModItems.TEST_PICKAXE.get()));
-                    output.accept(new ItemStack(ModItems.COLORED_ITEM.get()));
-                    output.accept(new ItemStack(ModItems.PROPERTY_ITEM.get()));
-                    output.accept(new ItemStack(ModItems.TEST_TOOL.get()));
-                }));
-    }
-
-    public void onCreativeModeTabBuildContents(CreativeModeTabEvent.BuildContents event)
-    {
-        if (event.getTab() == CreativeModeTabs.NATURAL_BLOCKS)
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS)
             event.accept(Blocks.REDSTONE_BLOCK);
     }
 }

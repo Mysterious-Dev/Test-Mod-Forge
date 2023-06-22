@@ -2,14 +2,11 @@ package fr.lmf.test_mod_forge.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.commands.CommandBuildContext;
-import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
-import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -53,7 +50,9 @@ public class TestCommand {
     {
         targets.forEach(e -> e.setSecondsOnFire(duration));
 
-        src.sendSuccess(Component.translatable("commands.banlist.none"), false);
+        src.sendSuccess(() -> {
+            return Component.translatable("commands.banlist.none");
+        },  false);
 
         return targets.size();
     }
@@ -65,7 +64,9 @@ public class TestCommand {
        if(!serverlevel.isClientSide)
            serverlevel.setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
 
-        src.sendSuccess(Component.translatable("commands.banlist.none"), false);
+        src.sendSuccess(() -> {
+            return Component.translatable("commands.banlist.none");
+        }, false);
 
         return 1;
     }

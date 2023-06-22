@@ -64,7 +64,7 @@ public class TestEntity extends Animal {
         return 0.4F;
     }
 
-    public InteractionResult mobInteract(Player p_28298_, InteractionHand p_28299_) {
+    /*public InteractionResult mobInteract(Player p_28298_, InteractionHand p_28299_) {
         ItemStack itemstack = p_28298_.getItemInHand(p_28299_);
         if (itemstack.is(Items.BUCKET) && !this.isBaby()) {
             p_28298_.playSound(SoundEvents.COW_MILK, 1.0F, 1.0F);
@@ -74,13 +74,13 @@ public class TestEntity extends Animal {
         } else {
             return super.mobInteract(p_28298_, p_28299_);
         }
-    }
+    }*/
 
-    private boolean isMovingOnLand() {
+    /*private boolean isMovingOnLand() {
         return this.onGround && this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6D && !this.isInWaterOrBubble();
-    }
+    }*/
 
-    public void tick() {
+    /*public void tick() {
         if (this.level.isClientSide()) {
             if (this.isMovingOnLand()) {
                 this.walkAnimationState.startIfStopped(this.tickCount);
@@ -90,7 +90,7 @@ public class TestEntity extends Animal {
         }
 
         super.tick();
-    }
+    }*/
 
     public TestEntity getBreedOffspring(ServerLevel p_148890_, AgeableMob p_148891_) {
         return ModEntities.TEST_ENTITY.get().create(p_148890_);
