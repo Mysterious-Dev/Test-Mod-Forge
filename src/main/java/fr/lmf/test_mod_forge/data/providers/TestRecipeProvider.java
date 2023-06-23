@@ -54,8 +54,8 @@ public class TestRecipeProvider extends RecipeProvider {
                 .unlockedBy("obtain_netherite_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.NETHERITE_INGOT))
                 .save(p_251297_, "iron_ingot_blasting");
 
-        /*LegacyUpgradeRecipeBuilder.smithing(Ingredient.of(Items.DIAMOND_BLOCK), Ingredient.of(Items.NETHERITE_INGOT), RecipeCategory.BUILDING_BLOCKS, Items.NETHERITE_BLOCK)
-                .unlocks("obtain_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND))
-                .save(p_251297_, new ResourceLocation("test_smithing_recipe"));*/
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.DIAMOND_BLOCK), Ingredient.of(Items.STONE_PICKAXE), Ingredient.of(Items.IRON_INGOT), RecipeCategory.BUILDING_BLOCKS, Items.IRON_PICKAXE)
+                .unlocks("obtain_diamond_block_and_pickage", InventoryChangeTrigger.TriggerInstance.hasItems(Items.STONE_PICKAXE, Items.IRON_INGOT))
+                .save(p_251297_, new ResourceLocation("stone_pickage_upgrade"));
     }
 }

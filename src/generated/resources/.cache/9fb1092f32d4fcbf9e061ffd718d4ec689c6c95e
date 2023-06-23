@@ -1,4 +1,5 @@
-// 1.20.1	2023-06-22T19:55:13.1593074	Recipes
+// 1.20.1	2023-06-23T09:26:33.6879786	Recipes
+84e5de9ab9102910dfcd6390a8fb6de15ed02d27 data/minecraft/advancements/recipes/building_blocks/stone_pickage_upgrade.json
 4cb4ec6058532dba326addc84c83757590d16752 data/minecraft/advancements/recipes/misc/diamond.json
 792b506a21d3a6810f8d96a232d0ebaea7107266 data/minecraft/advancements/recipes/misc/iron_ingot.json
 cacfb189724bbee0cf25623d325b4b9f23581f40 data/minecraft/advancements/recipes/misc/iron_ingot_blasting.json
@@ -11,3 +12,4 @@ f35e7371823f524d1d2fb97dd3025d2adb57ff3b data/minecraft/advancements/recipes/mis
 98106ff67d5fc0e841574264a8698040e6fcbcf0 data/minecraft/recipes/iron_ingot_smelting.json
 36889b1851aeb06b5b2f8fee312ff8045f7592dc data/minecraft/recipes/iron_ingot_smoking.json
 5153c2a41f32f6088e0310ac41bbcde47f1cf57b data/minecraft/recipes/netherite_ingot.json
+f9ad8badcd1ae057a1ae3f781383ba3925eff7ba data/minecraft/recipes/stone_pickage_upgrade.json
